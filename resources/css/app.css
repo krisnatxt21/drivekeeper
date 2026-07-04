@@ -1,3 +1,45 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-gray-100 text-gray-900;
+    }
+
+    /* Dark mode body */
+    .dark body {
+        @apply bg-surface-900 text-gray-100;
+    }
+}
+
+@layer components {
+
+    /* Sidebar link aktif & hover */
+    .nav-link {
+        @apply flex items-center gap-3 px-4 py-2.5 rounded-lg text-sm font-medium transition-all duration-200;
+    }
+
+    .nav-link:hover {
+        @apply bg-surface-700 text-white;
+    }
+
+    .nav-link.active {
+        @apply bg-primary text-white;
+    }
+
+    /* Card */
+    .card {
+        @apply bg-white dark:bg-surface-800 rounded-xl shadow-sm border border-gray-200 dark:border-surface-700 p-6;
+    }
+
+    /* Button primary */
+    .btn-primary {
+        @apply bg-primary hover:bg-primary-dark text-white px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+    }
+
+    /* Button secondary */
+    .btn-secondary {
+        @apply bg-gray-200 dark:bg-surface-700 hover:bg-gray-300 dark:hover:bg-surface-600 text-gray-800 dark:text-gray-200 px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200;
+    }
+}
