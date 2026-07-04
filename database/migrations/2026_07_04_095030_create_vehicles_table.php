@@ -13,21 +13,20 @@ public function up(): void
 {
     Schema::create('vehicles', function (Blueprint $table) {
         $table->id();
-
-        $table->foreignId('customer_id')
-              ->constrained()
-              ->cascadeOnDelete();
-
-        $table->string('plate_number')->unique();
-        $table->string('brand');
-        $table->string('model');
-        $table->integer('year')->nullable();
-        $table->string('color')->nullable();
-        $table->integer('mileage')->default(0);
-
+        $table->foreignId('user_id')->constrained()->cascadeOnDelete(); // milik user mana
+        $table->string('brand');                            // merk: Toyota, Honda
+        $table->string('model');                            // model: Avanza, Beat
+        $table->year('year');                               // tahun: 2020
+        $table->string('plate_number')->unique();           // plat nomor
+        $table->string('color')->nullable();                // warna
+        $table->string('engine_number')->nullable();        // nomor mesin
+        $table->string('chassis_number')->nullable();       // nomor rangka
+        $table->unsignedInteger('odometer')->default(0);    // odometer (km)
+        $table->string('photo')->nullable();                // foto kendaraan
         $table->timestamps();
     });
 }
+
 
 public function down(): void
 {
