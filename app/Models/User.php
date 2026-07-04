@@ -46,4 +46,10 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+        // User punya banyak kendaraan
+    public function vehicles()
+    {
+        return $this->hasMany(Vehicle::class);
+    }
+    
 }
