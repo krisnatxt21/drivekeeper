@@ -1,8 +1,8 @@
 <x-app-layout>
 
     <div class="flex items-center gap-4 mb-6">
-        <a href="{{ route('fuel-logs.index') }}" class="text-gray-400 hover:text-white">← Kembali</a>
-        <h2 class="text-2xl font-bold text-white">Edit Catatan BBM</h2>
+        <a href="{{ route('reminders.index') }}" class="text-gray-400 hover:text-white">← Kembali</a>
+        <h2 class="text-2xl font-bold text-white">Edit Pengingat</h2>
     </div>
 
     <div class="card max-w-2xl">
@@ -17,7 +17,7 @@
             </div>
         @endif
 
-        <form action="{{ route('fuel-logs.update', $fuelLog) }}" method="POST">
+        <form action="{{ route('reminders.update', $reminder) }}" method="POST">
             @csrf
             @method('PUT')
 
@@ -29,53 +29,45 @@
                             class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
                         @foreach($vehicles as $vehicle)
                             <option value="{{ $vehicle->id }}"
-                                {{ old('vehicle_id', $fuelLog->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
+                                {{ old('vehicle_id', $reminder->vehicle_id) == $vehicle->id ? 'selected' : '' }}>
                                 {{ $vehicle->brand }} {{ $vehicle->model }} - {{ $vehicle->plate_number }}
                             </option>
                         @endforeach
                     </select>
                 </div>
 
-                <div>
-                    <label class="block text-sm text-gray-400 mb-1">Tanggal *</label>
-                    <input type="date" name="fueled_at"
-                           value="{{ old('fueled_at', $fuelLog->fueled_at->format('Y-m-d')) }}"
+                <div class="md:col-span-2">
+                    <label class="block text-sm text-gray-400 mb-1">Judul Pengingat *</label>
+                    <input type="text" name="title"
+                           value="{{ old('title', $reminder->title) }}"
                            class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-400 mb-1">Nama SPBU</label>
-                    <input type="text" name="gas_station"
-                           value="{{ old('gas_station', $fuelLog->gas_station) }}"
+                    <label class="block text-sm text-gray-400 mb-1">Tanggal Pengingat *</label>
+                    <input type="date" name="reminder_date"
+                           value="{{ old('reminder_date', $reminder->reminder_date->format('Y-m-d')) }}"
                            class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
                 </div>
 
                 <div>
-                    <label class="block text-sm text-gray-400 mb-1">Jumlah Liter *</label>
-                    <input type="number" name="liters" step="0.01"
-                           value="{{ old('liters', $fuelLog->liters) }}"
-                           class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
-                </div>
-
-                <div>
-                    <label class="block text-sm text-gray-400 mb-1">Harga per Liter (Rp) *</label>
-                    <input type="number" name="price_per_liter"
-                           value="{{ old('price_per_liter', $fuelLog->price_per_liter) }}"
+                    <label class="block text-sm text-gray-400 mb-1">Trigger Odometer (km)</label>
+                    <input type="number" name="odometer_threshold"
+                           value="{{ old('odometer_threshold', $reminder->odometer_threshold) }}"
                            class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
                 </div>
 
                 <div class="md:col-span-2">
-                    <label class="block text-sm text-gray-400 mb-1">Odometer (km) *</label>
-                    <input type="number" name="odometer"
-                           value="{{ old('odometer', $fuelLog->odometer) }}"
-                           class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">
+                    <label class="block text-sm text-gray-400 mb-1">Catatan</label>
+                    <textarea name="notes" rows="3"
+                              class="w-full bg-surface-700 border border-surface-600 text-white rounded-lg px-4 py-2 focus:outline-none focus:border-primary">{{ old('notes', $reminder->notes) }}</textarea>
                 </div>
 
             </div>
 
             <div class="flex gap-3 mt-6">
                 <button type="submit" class="btn-primary">Update</button>
-                <a href="{{ route('fuel-logs.index') }}" class="btn-secondary">Batal</a>
+                <a href="{{ route('reminders.index') }}" class="btn-secondary">Batal</a>
             </div>
 
         </form>
