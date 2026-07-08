@@ -5,6 +5,9 @@ use App\Http\Controllers\VehicleController;
 use App\Http\Controllers\ServiceRecordController;
 
 Route::view('/', 'welcome');
+// AI 
+Route::get('ai', [\App\Http\Controllers\AiRecommendationController::class, 'index'])->name('ai.index');
+Route::post('ai/predict', [\App\Http\Controllers\AiRecommendationController::class, 'predict'])->name('ai.predict');
 
 Route::get('dashboard', [\App\Http\Controllers\DashboardController::class, 'index'])
     ->middleware(['auth', 'verified'])

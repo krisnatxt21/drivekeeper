@@ -35,6 +35,11 @@
                 {{ $slot }}
             </main>
 
+            {{-- Footer --}}
+            <footer class="text-center py-2 text-xs text-gray-600 dark:text-gray-700 border-t border-surface-700 flex-shrink-0">
+                DriveKeeper &copy; {{ date('Y') }} • Developed by <span class="text-primary font-semibold">KrishhhV2</span>
+            </footer>
+
         </div>
     </div>
 

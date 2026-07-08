@@ -17,7 +17,11 @@ class ServiceRecord extends Model
         'receipt_photo',
     ];
 
-    // Servis ini milik satu kendaraan
+    protected $casts = [
+        'service_date' => 'date',
+        'cost' => 'decimal:2',
+    ];
+
     public function vehicle()
     {
         return $this->belongsTo(Vehicle::class);

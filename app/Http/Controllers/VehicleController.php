@@ -6,11 +6,11 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
-{
-    // Tampilkan semua kendaraan milik user yang login
-    public function index()
+public function index()
     {
-        $vehicles = Vehicle::where('user_id', auth()->id())->latest()->get();
+        $vehicles = Vehicle::where('user_id', auth()->id())
+            ->latest()
+            ->paginate(12);
         return view('vehicles.index', compact('vehicles'));
     }
 
