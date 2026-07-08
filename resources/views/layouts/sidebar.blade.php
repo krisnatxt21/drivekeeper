@@ -76,13 +76,11 @@
     AI Rekomendasi
     </a>
 
-
-
     </nav>
 
-    {{-- User Info --}}
+    {{-- User Info + Logout --}}
     <div class="px-4 py-4 border-t border-surface-700">
-        <div class="flex items-center gap-3">
+        <div class="flex items-center gap-3 mb-3">
             <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white text-sm font-bold">
                 {{ strtoupper(substr(auth()->user()->name, 0, 1)) }}
             </div>
@@ -91,6 +89,18 @@
                 <p class="text-xs text-gray-500">{{ auth()->user()->email }}</p>
             </div>
         </div>
+
+        {{-- Logout --}}
+        <form id="logout-form" method="POST" action="/logout">
+            @csrf
+            <button type="submit"
+                    class="w-full flex items-center gap-2 text-xs text-gray-400 hover:text-primary transition-all px-2 py-1.5 rounded-lg hover:bg-surface-700">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
+                </svg>
+                Logout
+            </button>
+        </form>
     </div>
 
 </aside>

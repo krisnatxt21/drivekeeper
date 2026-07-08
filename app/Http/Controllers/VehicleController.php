@@ -6,7 +6,8 @@ use App\Models\Vehicle;
 use Illuminate\Http\Request;
 
 class VehicleController extends Controller
-public function index()
+{
+    public function index()
     {
         $vehicles = Vehicle::where('user_id', auth()->id())
             ->latest()

@@ -1,14 +1,32 @@
-{{-- Logout --}}
-<button
-    x-data
-    @click="$wire.call ? $wire.call('logout') : document.getElementById('logout-form').submit()"
-    class="flex items-center gap-2 text-sm text-gray-600 dark:text-gray-300 hover:text-primary transition-all">
-    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"/>
-    </svg>
-    Logout
-</button>
+<header class="h-16 bg-white dark:bg-surface-800 border-b border-gray-200 dark:border-surface-700 flex items-center justify-between px-6 flex-shrink-0">
 
-<form id="logout-form" method="POST" action="/logout" class="hidden">
-    @csrf
-</form>
+    {{-- Judul Halaman --}}
+    <h1 class="text-lg font-semibold text-gray-800 dark:text-white">
+        {{ $pageTitle ?? 'Dashboard' }}
+    </h1>
+
+    {{-- Dark Mode Toggle --}}
+    <button onclick="toggleDarkMode()"
+            class="p-2 rounded-lg bg-gray-100 dark:bg-surface-700 text-gray-600 dark:text-gray-300 hover:bg-gray-200 dark:hover:bg-surface-600 transition-all">
+        <svg id="icon-moon" class="w-5 h-5 hidden dark:block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z"/>
+        </svg>
+        <svg id="icon-sun" class="w-5 h-5 block dark:hidden" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z"/>
+        </svg>
+    </button>
+
+</header>
+
+{{-- Script Dark Mode --}}
+<script>
+    if (localStorage.getItem('darkMode') === 'true') {
+        document.documentElement.classList.add('dark');
+    }
+
+    function toggleDarkMode() {
+        const html = document.documentElement;
+        html.classList.toggle('dark');
+        localStorage.setItem('darkMode', html.classList.contains('dark'));
+    }
+</script>
