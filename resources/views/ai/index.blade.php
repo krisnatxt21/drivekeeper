@@ -103,7 +103,7 @@
                     <li>Tingkat urgensi servis</li>
                 </ul>
                 <p class="mt-4">Faktor yang dipertimbangkan:</p>
-                <ul class="list-disc list-inside space-y-1 ml-2">
+                <ul class="list-disc list-inside space-y-1 ml-2">base → Connection String → URI
                     <li>Kondisi jalan</li>
                     <li>Jenis oli yang digunakan</li>
                     <li>Pola penggunaan kendaraan</li>

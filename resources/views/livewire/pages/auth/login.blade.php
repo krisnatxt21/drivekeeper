@@ -93,7 +93,7 @@ new #[Layout('layouts.guest')] class extends Component
         </div>
 
         <p class="text-center text-gray-600 text-xs mt-6">
-            DriveKeeper &copy; {{ date('Y') }} • Developed by <span class="text-primary">KrishhhV2</span>
+            DriveKeeper &copy; {{ date('Y') }} • Developed by <span class="text-primary">KrishhV2</span>
         </p>
 
     </div>
