@@ -44,5 +44,11 @@
     </div>
 
     @livewireScripts
+    <script defer>
+        // Expose Alpine to window after Livewire initializes it
+        document.addEventListener('livewire:navigated', function() {
+            window.Alpine = window.Alpine || {};
+        });
+    </script>
 </body>
 </html>
